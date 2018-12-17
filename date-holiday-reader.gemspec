@@ -5,7 +5,7 @@ require "date_holidays/reader/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "date-holidays-reader"
-spec.version       = DateHolidays::Reader::VERSION
+  spec.version       = DateHolidays::Reader::VERSION
   spec.authors       = ["Ryan Gerry"]
   spec.email         = ["rgerry@bluemarblepayroll.com"]
 
