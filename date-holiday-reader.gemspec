@@ -4,14 +4,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "date_holidays/reader/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "date-holiday-reader"
+  spec.name          = "date-holidays-reader"
 spec.version       = DateHolidays::Reader::VERSION
   spec.authors       = ["Ryan Gerry"]
   spec.email         = ["rgerry@bluemarblepayroll.com"]
 
-  spec.summary       = %q{A read only Ruby wrapper around the date-holiday Node module}
-  spec.description   = %q{This provides a read only interace over the data provided by the date-holiday Node module available at https://github.com/commenthol/date-holidays .}
-  spec.homepage      = "http://www.github.com/bluemarblepayroll/date-holiday-reader/"
+  spec.summary       = %q{A read only Ruby wrapper around the date-holidays Node module}
+  spec.description   = %q{This provides a read only interace over the data provided by the date-holidays Node module available at https://github.com/commenthol/date-holidays .}
+  spec.homepage      = "http://www.github.com/bluemarblepayroll/date-holidays-reader/"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
