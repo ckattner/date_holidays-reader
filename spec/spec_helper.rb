@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "date_holiday/reader"
+require "date_holidays/reader"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

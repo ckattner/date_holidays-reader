@@ -1,6 +1,6 @@
-require "date_holiday/reader/version"
+require "date_holidays/reader/version"
 
-module DateHoliday
+module DateHolidays
   module Reader
     class Error < StandardError; end
     # Your code goes here...

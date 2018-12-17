@@ -1,11 +1,11 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "date_holiday/reader/version"
+require "date_holidays/reader/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "date-holiday-reader"
-spec.version       = DateHoliday::Reader::VERSION
+spec.version       = DateHolidays::Reader::VERSION
   spec.authors       = ["Ryan Gerry"]
   spec.email         = ["rgerry@bluemarblepayroll.com"]
 
