@@ -1,0 +1,9 @@
+{
+  "name": "date-holiday-reader",
+  "main": "index.js",
+  "author": "Ryan Gerry <rgerry@bluemarblepayroll.com>",
+  "private": true,
+  "dependencies": {
+    "date-holidays": "~1"
+  }
+}
