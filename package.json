@@ -5,5 +5,8 @@
   "private": true,
   "dependencies": {
     "date-holidays": "~1"
+  },
+  "devDependencies": {
+    "pkg": "^4.3.5"
   }
 }
