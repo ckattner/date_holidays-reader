@@ -40,4 +40,5 @@ Everyone interacting in the DateHolidays::Reader project’s codebases, issue tr
 
 ## TODO
 
-Expose the date-holidays Node module version.
+* Expose the date-holidays Node module version.
+* rename to date_holidays-readr
