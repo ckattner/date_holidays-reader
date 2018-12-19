@@ -42,3 +42,4 @@ Everyone interacting in the DateHolidays::Reader project’s codebases, issue tr
 
 * Expose the date-holidays Node module version.
 * rename to date_holidays-readr
+* Support getCountries() and getStates()

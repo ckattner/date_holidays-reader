@@ -1,8 +1,11 @@
-require "date_holidays/reader/version"
+# frozen_string_literal: true
+
+require 'date_holidays/reader/query'
+require 'date_holidays/reader/version'
 
 module DateHolidays
+  # Defines the outermost module for the gem.
   module Reader
-    class Error < StandardError; end
     # Your code goes here...
   end
 end
