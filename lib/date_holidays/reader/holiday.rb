@@ -13,7 +13,7 @@ module DateHolidays
     #
     # Start and end times are represented as Time instances in UTC. Note that
     # New Year's day in the US has a start time of January 1st at 5 AM UTC as
-    # Eastern Standart Time is five hours after UTC.
+    # Eastern Standard Time is five hours after UTC.
     class Holiday
       acts_as_hashable
 
