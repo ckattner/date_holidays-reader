@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'date_holidays/reader/query'
+require 'date_holidays/reader/locale'
 require 'date_holidays/reader/version'
 
 module DateHolidays

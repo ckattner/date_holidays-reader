@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 module DateHolidays
   module Reader
-
-    # A query interface for reading holiday information
-    class Query
+    # Represents specific locale which contains holidays. This is the main
+    # entry point into the gem.
+    class Locale
       attr_reader :country
 
-      NODE_BIN_PATH = File.expand_path('../../../../node_bin', __FILE__).freeze
+      NODE_BIN_PATH = File.expand_path('../../../node_bin', __dir__).freeze
       private_constant :NODE_BIN_PATH
 
       def initialize(country:)

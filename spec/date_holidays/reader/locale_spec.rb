@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe DateHolidays::Reader::Query do
+RSpec.describe DateHolidays::Reader::Locale do
   it 'retrieves basic UK holidays' do
     subject = described_class.new(country: :gb)
 
