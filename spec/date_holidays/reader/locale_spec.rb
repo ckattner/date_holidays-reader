@@ -8,9 +8,9 @@ RSpec.describe DateHolidays::Reader::Locale do
   end
 
   it 'retrieves basic UK holidays' do
-    subject = described_class.new(country: :gb)
+    gb = described_class.new(country: :gb)
+    holidays2018 = gb.holidays(2018)
 
-    holidays2018 = subject.holidays(2018)
     expect(holidays2018.length).to eq(9)
     expect(holidays2018).to eq(gb_holidays)
   end
@@ -23,14 +23,28 @@ RSpec.describe DateHolidays::Reader::Locale do
       name: 'Battle of the Boyne, Orangemen’s Day',
       type: 'public',
     )
-    subject = described_class.new(country: :gb, state: :nir)
+    nothern_ireland = described_class.new(country: :gb, state: :nir)
+    holidays2018 = nothern_ireland.holidays(2018)
 
-    holidays2018 = subject.holidays(2018)
     expect(holidays2018.length).to eq(13)
     expect(holidays2018).to include(organmens_day)
   end
 
-  it 'retreives holidays for a specific state and region'
+  it 'retreives holidays for a specific state and region' do
+    mardi_gras = DateHolidays::Reader::Holiday.new(
+      date: '2019-03-05 00:00:00',
+      start_time: '2019-03-05T06:00:00.000Z',
+      end_time: '2019-03-06T06:00:00.000Z',
+      name: 'Mardi Gras',
+      type: 'public',
+    )
+
+    new_orleans = described_class.new(country: :us, state: :la, region: :no)
+    holidays2019 = new_orleans.holidays(2019)
+
+    expect(holidays2019.length).to eq(21)
+    expect(holidays2019).to include(mardi_gras)
+  end
 
   it 'retreives holidays for a specific year'
 
