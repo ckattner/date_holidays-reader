@@ -23,7 +23,11 @@ module DateHolidays
       def raw_holidays(year, language: :en)
         # TODO: use Open3 instead for security reasons: https://ruby-doc.org/stdlib-2.3.0/libdoc/open3/rdoc/Open3.html#method-c-popen3
         # TODO: support Linux:
-        json_string = `#{File.join(NODE_BIN_PATH, 'holidays-to-json-macos')} #{locale_selector} #{year}`
+        lang_opt = language ? "--lang #{language}" : ''
+        command = "#{File.join(NODE_BIN_PATH, 'holidays-to-json-macos')} #{locale_selector} #{year} #{lang_opt}"
+
+        #puts "command: #{command}"
+        json_string = `#{command}`
         JSON.parse(json_string)
       end
 
@@ -49,7 +53,7 @@ module DateHolidays
       end
 
       def locale_selector
-        [country, state, region].join('.')
+        [country, state, region].compact.join('.')
       end
     end
   end

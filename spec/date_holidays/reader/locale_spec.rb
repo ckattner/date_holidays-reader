@@ -6,9 +6,9 @@ RSpec.describe DateHolidays::Reader::Locale do
     holidays_json = JSON.parse(File.read(fixture_path))
     DateHolidays::Reader::Holiday.array(holidays_json)
   end
+  let(:gb) { described_class.new(country: :gb) }
 
   it 'retrieves basic UK holidays' do
-    gb = described_class.new(country: :gb)
     holidays2018 = gb.holidays(2018)
 
     expect(holidays2018.length).to eq(9)
@@ -46,15 +46,18 @@ RSpec.describe DateHolidays::Reader::Locale do
     expect(holidays2019).to include(mardi_gras)
   end
 
-  it 'retreives holidays for a specific year'
-
-  it 'retreives holidays in a specific language'
+  it 'retreives holidays in a specific language' do
+    gb = described_class.new(country: :gb)
+    expect(gb.holidays(2017, language: :es).first.name).to eq 'Año Nuevo'
+  end
 
   it 'filters by holiday type'
 
-  specify 'getHolidays is an alias for holidays'
-
   describe 'validation' do
-    it 'requires a country'
+    it 'requires a country' do
+      expect do
+        described_class.new(country: nil, state: :il)
+      end.to raise_error ArgumentError, 'a country is required'
+    end
   end
 end
