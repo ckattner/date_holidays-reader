@@ -10,10 +10,12 @@ module DateHolidays
       NODE_BIN_PATH = File.expand_path('../../../node_bin', __dir__).freeze
       private_constant :NODE_BIN_PATH
 
-      attr_reader :country
+      attr_reader :country, :state, :region
 
-      def initialize(country:)
+      def initialize(country:, state: nil, region: nil)
         @country = country || raise(ArgumentError, 'a country is required')
+        @state = state
+        @region = region
       end
 
       # Returns the holiday data as a hash exactly as returned from the
@@ -21,7 +23,7 @@ module DateHolidays
       def raw_holidays(year, language: :en)
         # TODO: use Open3 instead for security reasons: https://ruby-doc.org/stdlib-2.3.0/libdoc/open3/rdoc/Open3.html#method-c-popen3
         # TODO: support Linux:
-        json_string = `#{File.join(NODE_BIN_PATH, 'holidays-to-json-macos')} #{country} #{year}`
+        json_string = `#{File.join(NODE_BIN_PATH, 'holidays-to-json-macos')} #{locale_selector} #{year}`
         JSON.parse(json_string)
       end
 
@@ -34,14 +36,20 @@ module DateHolidays
 
       private
 
-      # Node date-holdiays uses start and end keys. The "end" key does not play well with Ruby.
       def transform_raw_holiday(raw)
+        # Note that this could instead be .slice under Ruby >= 2.5 or with Rails:
         clean_hash = raw.select { |key, _value| SUPPORTED_HOLIDAY_ATTRIBUTES.include?(key) }
 
+        # Node date-holdiays uses start and end keys. The "end" key does not play well with Ruby.
+        # Also, the "_time" suffix adds clarity.
         clean_hash[:start_time] = clean_hash.delete('start')
         clean_hash[:end_time] = clean_hash.delete('end')
 
         clean_hash
+      end
+
+      def locale_selector
+        [country, state, region].join('.')
       end
     end
   end

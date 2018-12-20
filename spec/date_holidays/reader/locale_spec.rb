@@ -15,7 +15,20 @@ RSpec.describe DateHolidays::Reader::Locale do
     expect(holidays2018).to eq(gb_holidays)
   end
 
-  it 'retreives holidays for a specific state'
+  it 'retreives holidays for a specific state' do
+    organmens_day = DateHolidays::Reader::Holiday.new(
+      date: '2018-07-12 00:00:00',
+      start_time: '2018-07-11T23:00:00.000Z',
+      end_time: '2018-07-12T23:00:00.000Z',
+      name: 'Battle of the Boyne, Orangemen’s Day',
+      type: 'public',
+    )
+    subject = described_class.new(country: :gb, state: :nir)
+
+    holidays2018 = subject.holidays(2018)
+    expect(holidays2018.length).to eq(13)
+    expect(holidays2018).to include(organmens_day)
+  end
 
   it 'retreives holidays for a specific state and region'
 

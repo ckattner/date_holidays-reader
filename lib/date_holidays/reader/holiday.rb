@@ -55,3 +55,8 @@ module DateHolidays
     end
   end
 end
+
+# For reference:
+# Core Time: https://ruby-doc.org/core-2.3.6/Time.html
+# Stdlib Time: https://ruby-doc.org/stdlib-2.3.8/libdoc/time/rdoc/Time.html
+# Stdlib Date: http://ruby-doc.org/stdlib-2.3.8/libdoc/date/rdoc/Date.html
