@@ -1,5 +1,5 @@
 {
-  "name": "date-holidays-reader",
+  "name": "date_holidays-reader",
   "main": "index.js",
   "author": "Ryan Gerry <rgerry@bluemarblepayroll.com>",
   "private": true,
