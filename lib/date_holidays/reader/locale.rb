@@ -70,7 +70,11 @@ module DateHolidays
       def validate_and_convert_types_to_set(types)
         types = types.is_a?(Set) ? types : Set.new(types)
         invalid_types = types.difference(HOLIDAY_TYPES)
-        raise ArgumentError, "invalid holiday type(s): #{invalid_types.to_a.join(', ')}" if invalid_types.any?
+
+        if invalid_types.any?
+          error_msg = "invalid holiday type(s): #{invalid_types.to_a.join(', ')}"
+          raise ArgumentError, error_msg
+        end
 
         types
       end
