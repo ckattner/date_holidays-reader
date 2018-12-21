@@ -7,6 +7,7 @@ RSpec.describe DateHolidays::Reader::Locale do
     DateHolidays::Reader::Holiday.array(holidays_json)
   end
   let(:gb) { described_class.new(country: :gb) }
+  let(:us) { described_class.new(country: :us) }
 
   it 'retrieves basic UK holidays' do
     holidays2018 = gb.holidays(2018)
@@ -21,7 +22,7 @@ RSpec.describe DateHolidays::Reader::Locale do
       start_time: '2018-07-11T23:00:00.000Z',
       end_time: '2018-07-12T23:00:00.000Z',
       name: 'Battle of the Boyne, Orangemen’s Day',
-      type: 'public',
+      type: 'public'
     )
     nothern_ireland = described_class.new(country: :gb, state: :nir)
     holidays2018 = nothern_ireland.holidays(2018)
@@ -36,7 +37,7 @@ RSpec.describe DateHolidays::Reader::Locale do
       start_time: '2019-03-05T06:00:00.000Z',
       end_time: '2019-03-06T06:00:00.000Z',
       name: 'Mardi Gras',
-      type: 'public',
+      type: 'public'
     )
 
     new_orleans = described_class.new(country: :us, state: :la, region: :no)
@@ -46,12 +47,36 @@ RSpec.describe DateHolidays::Reader::Locale do
     expect(holidays2019).to include(mardi_gras)
   end
 
+  it 'retreives holidays for a region for a country without states'
+
   it 'retreives holidays in a specific language' do
     gb = described_class.new(country: :gb)
     expect(gb.holidays(2017, language: :es).first.name).to eq 'Año Nuevo'
   end
 
-  it 'filters by holiday type'
+  describe 'holiday type' do
+    it 'filters by a single type' do
+      found_holidays = us.holidays(2018, types: [:optional])
+      found_holiday_types = Set.new(found_holidays.map(&:type))
+
+      expect(found_holiday_types).to eq Set.new([:optional])
+    end
+
+    it 'filters by a multiple types' do
+      found_holidays = us.holidays(2018, types: %i[optional public])
+      found_holiday_types = Set.new(found_holidays.map(&:type))
+
+      expect(found_holiday_types).to eq Set.new(%i[optional public])
+    end
+
+    it 'raises an ArgumentError when passed an invalid type' do
+      expect do
+        us.holidays(2018, types: %i[public bogus bogus2])
+      end.to raise_error ArgumentError, 'invalid holiday type(s): bogus, bogus2'
+    end
+  end
+
+  it 'allows a timezone to be set'
 
   describe 'validation' do
     it 'requires a country' do
