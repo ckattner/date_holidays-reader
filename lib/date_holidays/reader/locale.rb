@@ -61,6 +61,7 @@ module DateHolidays
       end
 
       # Needed because of https://github.com/commenthol/date-holidays/issues/56
+      # TODO: this has been fixed: let node filter by type
       def type_filter(raw_holidays, types)
         return raw_holidays if types.empty?
 
