@@ -41,7 +41,7 @@ module DateHolidays
       # https://github.com/commenthol/date-holidays#types-of-holidays .
       HOLIDAY_TYPES = Set.new(%i[bank observance optional public school]).freeze
       NODE_BIN_PATH = File.expand_path('../../../node_bin', __dir__).freeze
-      SUPPORTED_HOLIDAY_ATTRIBUTES = Set.new(%w[date start end name type substitue note]).freeze
+      SUPPORTED_HOLIDAY_ATTRIBUTES = Set.new(%w[date start end name type substitute note]).freeze
       private_constant :NODE_BIN_PATH, :HOLIDAY_TYPES, :SUPPORTED_HOLIDAY_ATTRIBUTES
 
       def transform_raw_holiday(raw)
