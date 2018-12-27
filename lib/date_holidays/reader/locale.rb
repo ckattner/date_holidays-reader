@@ -18,6 +18,7 @@ module DateHolidays
       def raw_holidays(year, language: :en, types: Set.new)
         types = validate_and_convert_types_to_set(types)
         # TODO: use Open3 instead for security reasons: https://ruby-doc.org/stdlib-2.3.0/libdoc/open3/rdoc/Open3.html#method-c-popen3
+          # or just IO.popen: https://ruby-doc.org/core-2.3.0/IO.html#method-c-popen
         # TODO: support Linux:
         lang_opt = language ? "--lang #{language}" : ''
 

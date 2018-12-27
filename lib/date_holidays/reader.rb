@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'acts_as_hashable'
+require 'caution'
 require 'json'
 
 require 'date_holidays/reader/holiday'
