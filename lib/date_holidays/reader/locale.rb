@@ -17,16 +17,10 @@ module DateHolidays
       # date-holiday node module.
       def raw_holidays(year, language: :en, types: Set.new)
         types = validate_and_convert_types_to_set(types)
-        # TODO: use Open3 instead for security reasons: https://ruby-doc.org/stdlib-2.3.0/libdoc/open3/rdoc/Open3.html#method-c-popen3
-          # or just IO.popen: https://ruby-doc.org/core-2.3.0/IO.html#method-c-popen
-        # TODO: support Linux:
         lang_opt = language ? "--lang #{language}" : ''
 
-        command = "#{File.join(NODE_BIN_PATH, 'holidays-to-json-macos')} #{locale_selector} #{year} #{lang_opt}"
-
-        #puts "command: #{command}"
-        json_string = `#{command}`
-        type_filter(JSON.parse(json_string), types)
+        result = JsBridge.new.extract(:holidays, locale_selector, year, lang_opt)
+        type_filter(result, types)
       end
 
       # Returns DateHolidays::Reader::Holiday instances.
@@ -41,9 +35,8 @@ module DateHolidays
       # More inforamtion about holiday types is available at
       # https://github.com/commenthol/date-holidays#types-of-holidays .
       HOLIDAY_TYPES = Set.new(%i[bank observance optional public school]).freeze
-      NODE_BIN_PATH = File.expand_path('../../../node_bin', __dir__).freeze
       SUPPORTED_HOLIDAY_ATTRIBUTES = Set.new(%w[date start end name type substitute note]).freeze
-      private_constant :NODE_BIN_PATH, :HOLIDAY_TYPES, :SUPPORTED_HOLIDAY_ATTRIBUTES
+      private_constant :HOLIDAY_TYPES, :SUPPORTED_HOLIDAY_ATTRIBUTES
 
       def transform_raw_holiday(raw)
         # Note that this could instead be .slice under Ruby >= 2.5 or with Rails:

@@ -5,6 +5,7 @@ require 'caution'
 require 'json'
 
 require 'date_holidays/reader/holiday'
+require 'date_holidays/reader/js_bridge'
 require 'date_holidays/reader/locale'
 require 'date_holidays/reader/version'
 
