@@ -23,14 +23,18 @@ const DEFAULT_LANGUAGE = 'en';
 
 function extractData(cmd, hd, opts) {
   const extractor = COMMANDS[cmd]
+  let result = {};
 
   if (extractor) {
-    return extractor(hd, opts);
+    result = extractor(hd, opts);
   } else {
     console.error("Uknown sub-command: " + cmd);
     console.error("Valid sub-commands are: " + Object.keys(COMMANDS).join(', '));
     process.exit(1);
   }
+
+  // Always return the empty object so that it converts nicely to JSON.
+  return result || {};
 }
 
 if (module === require.main) {

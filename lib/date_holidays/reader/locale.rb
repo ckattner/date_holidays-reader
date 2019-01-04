@@ -11,15 +11,16 @@ module DateHolidays
         @country = country || raise(ArgumentError, 'a country is required')
         @state = state
         @region = region
+
+        freeze
       end
 
       # Returns the holiday data as a hash exactly as returned from the
       # date-holiday node module.
       def raw_holidays(year, language: :en, types: Set.new)
         types = validate_and_convert_types_to_set(types)
-        lang_opt = language ? "--lang #{language}" : ''
 
-        result = JsBridge.new.extract(:holidays, locale_selector, year, lang_opt)
+        result = js_bridge.extract(:holidays, locale_selector, year, lang_opt(language))
         type_filter(result, types)
       end
 
@@ -28,6 +29,24 @@ module DateHolidays
         raw_holidays(year, language: language, types: types).map do |raw_holiday|
           Holiday.make(transform_raw_holiday(raw_holiday))
         end
+      end
+
+      def states(language = :en)
+        js_bridge.extract(:states, locale_selector, lang_opt(language))
+      end
+
+      def regions(language = :en)
+        raise Caution::IllegalStateError, 'a state is required' unless state
+
+        js_bridge.extract(:regions, locale_selector, lang_opt(language))
+      end
+
+      def languages
+        js_bridge.extract(:languages, locale_selector)
+      end
+
+      def time_zones
+        js_bridge.extract(:time_zones, locale_selector)
       end
 
       private
@@ -72,6 +91,14 @@ module DateHolidays
         end
 
         types
+      end
+
+      def js_bridge
+        JsBridge.new
+      end
+
+      def lang_opt(language)
+        language ? "--lang #{language}" : ''
       end
     end
   end
