@@ -4,6 +4,7 @@ require 'acts_as_hashable'
 require 'caution'
 require 'json'
 
+require 'date_holidays/reader/config'
 require 'date_holidays/reader/holiday'
 require 'date_holidays/reader/js_bridge'
 require 'date_holidays/reader/locale'
