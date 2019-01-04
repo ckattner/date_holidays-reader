@@ -6,32 +6,35 @@
  * e.g.
  * holidays-to-json.js at.b 2015 1
  */
-var Holidays = require('date-holidays')
+var Holidays = require('date-holidays');
 
-var days = 'Sun,Mon,Tue,Wed,Thu,Fri,Sat'.split(',')
+var days = 'Sun,Mon,Tue,Wed,Thu,Fri,Sat'.split(',');
 function weekday (i) {
-  return days[new Date(i.date).getDay()]
+  return days[new Date(i.date).getDay()];
 }
 
 if (module === require.main) {
-  var cmd = {}
-  var opts = {}
-  var args = process.argv.slice(2)
-  var arg
+  var cmd = {};
+  var opts = {};
+  var args = process.argv.slice(2);
+  var arg;
 
   while ((arg = args.shift())) {
     if (arg === '--lang') {
-      opts.languages = args.shift()
+      opts.languages = args.shift();
     } else if (/^\d{4}$/.test(arg)) {
-      cmd.year = arg
+      opts.year = arg;
     } else if (/^[a-zA-Z]{2}/.test(arg)) {
-      cmd.country = arg
+      opts.country = arg;
     }
   }
 
-  cmd.year = cmd.year || (new Date()).getFullYear()
+  opts.year = opts.year || (new Date()).getFullYear();
+  opts.languages = opts.languages || ['en'];
+  console.log("opts")
+  console.log(opts)
 
-  var hd = new Holidays(cmd.country, opts)
-  var res = hd.getHolidays(cmd.year)
-  console.log(JSON.stringify(res))
+  var hd = new Holidays(opts.country, { languages: opts.languages } );
+  var res = hd.getHolidays(opts.year);
+  console.log(JSON.stringify(res));
 }
