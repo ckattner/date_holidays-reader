@@ -20,9 +20,7 @@ if (module === require.main) {
   var arg
 
   while ((arg = args.shift())) {
-    if (arg === '--short') {
-      cmd.short = true
-    } else if (arg === '--lang') {
+    if (arg === '--lang') {
       opts.languages = args.shift()
     } else if (/^\d{4}$/.test(arg)) {
       cmd.year = arg
@@ -35,19 +33,5 @@ if (module === require.main) {
 
   var hd = new Holidays(cmd.country, opts)
   var res = hd.getHolidays(cmd.year)
-
-  if (cmd.short) {
-    res = res.map(function (i) {
-      var day = weekday(i)
-      i.type += Array(11).join(' ')
-      return [day, i.date, i.type.substr(0, 10), i.name].join('   ')
-    })
-  } else {
-    res = res.map(function (i) {
-      i._weekday = weekday(i)
-      return i
-    })
-  }
-
   console.log(JSON.stringify(res))
 }
