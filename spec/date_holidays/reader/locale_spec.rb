@@ -137,7 +137,7 @@ RSpec.describe DateHolidays::Reader::Locale do
       found_langs = switzerland.languages
 
       expect(found_langs).to be_a Array
-      expect(Set.new(found_langs)).to eq Set.new(%w[en de fr it])
+      expect(Set.new(found_langs)).to eq Set.new(%w[en de-ch de fr it])
     end
   end
 
