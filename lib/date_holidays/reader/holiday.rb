@@ -21,8 +21,8 @@ module DateHolidays
 
       def initialize(date:, start_time:, end_time:, name:, type:, substitute: false, note: nil)
         @date = date.is_a?(Date) ? date : Date.strptime(date, '%Y-%m-%d')
-        @start = parse_time(start_time)
-        @end = parse_time(end_time)
+        @start_time = parse_time(start_time)
+        @end_time = parse_time(end_time)
         @name = name
         @type = type.to_sym
         @substitute = substitute
