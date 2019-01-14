@@ -19,7 +19,12 @@ module DateHolidays
 
       attr_reader :date, :start_time, :end_time, :name, :type, :note
 
+      # rubocop:disable Metrics/ParameterLists
+      # This cop defaults to five parameters which seems a little low for
+      # keyword arguments. This is a value object which gets frozen after
+      # initialization so I'd rather pass in everything as needed right away.
       def initialize(date:, start_time:, end_time:, name:, type:, substitute: false, note: nil)
+        # rubocop:enable Metrics/ParameterLists
         @date = date.is_a?(Date) ? date : Date.strptime(date, '%Y-%m-%d')
         @start_time = parse_time(start_time)
         @end_time = parse_time(end_time)
@@ -35,6 +40,9 @@ module DateHolidays
         @substitute
       end
 
+      # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+      # I could cut down on those cops by iterating over instance variable and
+      # using meta programming. However, that would obscure intent.
       def ==(other)
         other.is_a?(self.class) &&
           other.date == date &&
@@ -45,6 +53,7 @@ module DateHolidays
           other.substitute? == substitute? &&
           other.note == note
       end
+      # rubocop:enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
       private
 

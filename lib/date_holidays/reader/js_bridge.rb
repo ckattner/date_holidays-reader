@@ -10,10 +10,10 @@ module DateHolidays
         # TODO: use Open3 instead for security reasons: https://ruby-doc.org/stdlib-2.3.0/libdoc/open3/rdoc/Open3.html#method-c-popen3
         # or just IO.popen: https://ruby-doc.org/core-2.3.0/IO.html#method-c-popen
         # TODO: support Linux:
-        command = "#{File.join(NODE_BIN_PATH, 'holidays-to-json-macos')} #{sub_cmd} #{args.join(' ')}"
+        cmd = "#{File.join(NODE_BIN_PATH, 'holidays-to-json-macos')} #{sub_cmd} #{args.join(' ')}"
 
-        # puts "command: #{command}"
-        json_string = `#{command}`
+        # puts "cmd: #{wcmd}"
+        json_string = `#{cmd}`
         JSON.parse(json_string)
       end
 

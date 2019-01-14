@@ -22,11 +22,13 @@ module DateHolidays
 
         DATE_HOLIDAYS_MODULE_BEGIN = /\Adate-holidays@/.freeze
         VERSION_MATCHER = /\A  version "(.*?)"/.freeze
+        YARN_DOT_LOCK_ERROR_MSG = 'unable to determine date-holidays node module version from ' \
+                                  'yarn.lock'
         YARN_DOT_LOCK_PATH = File.expand_path('../../../yarn.lock', __dir__).freeze
-        private_constant :DATE_HOLIDAYS_MODULE_BEGIN, :YARN_DOT_LOCK_PATH
+        private_constant :DATE_HOLIDAYS_MODULE_BEGIN, :YARN_DOT_LOCK_ERROR_MSG, :YARN_DOT_LOCK_PATH
 
         # Note that yarn.lock does not use a standard format such as YAML or
-        # JSON and not native parser is currently available in Ruby. This is
+        # JSON and no native parser is currently available in Ruby. This is
         # basic but it gets the job done.
         def from_yarn_dot_lock
           look_for_version = false
@@ -41,8 +43,7 @@ module DateHolidays
             return found_version if found_version
           end
 
-          raise Caution::IllegalStateError,
-                'unable to determine date-holidays node module version from yarn.lock'
+          raise Caution::IllegalStateError, YARN_DOT_LOCK_ERROR_MSG
         end
 
         def extract_version(line)

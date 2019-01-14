@@ -19,17 +19,17 @@ RSpec.describe DateHolidays::Reader::Locale do
     end
 
     it 'correctly assigns subtitute days' do
-      us_2016 = us.holidays(2016)
+      us2016 = us.holidays(2016)
       xmas_date = Date.parse('2016-12-25')
       day_after_xmas_date = Date.parse('2016-12-26')
 
       # Not a substitute
-      xmas = us_2016.find { |h| h.date == xmas_date }
+      xmas = us2016.find { |h| h.date == xmas_date }
       expect(xmas).not_to be_nil
       expect(xmas.substitute?).to eq false
 
       # Monday, 2016-12-26 was a substitute as Christmas occured on a Sunday:
-      xmas_substitute = us_2016.find { |h| h.date == day_after_xmas_date }
+      xmas_substitute = us2016.find { |h| h.date == day_after_xmas_date }
       expect(xmas_substitute).not_to be_nil
       expect(xmas_substitute.substitute?).to eq true
     end
