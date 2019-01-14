@@ -8,11 +8,11 @@ module DateHolidays
 
       def extract(sub_cmd, *args)
         # TODO: use Open3 instead for security reasons: https://ruby-doc.org/stdlib-2.3.0/libdoc/open3/rdoc/Open3.html#method-c-popen3
-          # or just IO.popen: https://ruby-doc.org/core-2.3.0/IO.html#method-c-popen
+        # or just IO.popen: https://ruby-doc.org/core-2.3.0/IO.html#method-c-popen
         # TODO: support Linux:
         command = "#{File.join(NODE_BIN_PATH, 'holidays-to-json-macos')} #{sub_cmd} #{args.join(' ')}"
 
-        #puts "command: #{command}"
+        # puts "command: #{command}"
         json_string = `#{command}`
         JSON.parse(json_string)
       end

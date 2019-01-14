@@ -20,8 +20,8 @@ module DateHolidays
 
         private
 
-        DATE_HOLIDAYS_MODULE_BEGIN = /\Adate-holidays@/
-        VERSION_MATCHER = /\A  version "(.*?)"/
+        DATE_HOLIDAYS_MODULE_BEGIN = /\Adate-holidays@/.freeze
+        VERSION_MATCHER = /\A  version "(.*?)"/.freeze
         YARN_DOT_LOCK_PATH = File.expand_path('../../../yarn.lock', __dir__).freeze
         private_constant :DATE_HOLIDAYS_MODULE_BEGIN, :YARN_DOT_LOCK_PATH
 

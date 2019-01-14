@@ -24,7 +24,7 @@ RSpec.describe DateHolidays::Reader::Locale do
       day_after_xmas_date = Date.parse('2016-12-26')
 
       # Not a substitute
-      xmas= us_2016.find { |h| h.date == xmas_date }
+      xmas = us_2016.find { |h| h.date == xmas_date }
       expect(xmas).not_to be_nil
       expect(xmas.substitute?).to eq false
 
@@ -40,7 +40,7 @@ RSpec.describe DateHolidays::Reader::Locale do
         start_time: '2018-07-11T23:00:00.000Z',
         end_time: '2018-07-12T23:00:00.000Z',
         name: 'Battle of the Boyne, Orangemen’s Day',
-        type: 'public'
+        type: 'public',
       )
       nothern_ireland = described_class.new(country: :gb, state: :nir)
       holidays2018 = nothern_ireland.holidays(2018)
@@ -55,7 +55,7 @@ RSpec.describe DateHolidays::Reader::Locale do
         start_time: '2019-03-05T06:00:00.000Z',
         end_time: '2019-03-06T06:00:00.000Z',
         name: 'Mardi Gras',
-        type: 'public'
+        type: 'public',
       )
 
       new_orleans = described_class.new(country: :us, state: :la, region: :no)
