@@ -99,9 +99,9 @@ assign-symbols@^1.0.0:
   integrity sha1-WWZ/QfrdTyDMvCu5a41Pf3jsA2c=
 
 astronomia@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/astronomia/-/astronomia-2.0.1.tgz#11187803dae91cd5464afb1fa7ba532752e38d17"
-  integrity sha512-BJK2jVBDHRyTKoqG98L1IGavFvrW3i2I1V+eZlHVzTD3BWam3menQiIGEWXDOG5jUztEhjLObqgspZdApcwOQA==
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/astronomia/-/astronomia-2.0.2.tgz#79c86e0fc773e933676155ffdaa3dcd4fe4959a0"
+  integrity sha512-krOLqwEPvIjx/YR6zb5mpYNV87Dx2yflYY7+EYJff4TDTnatI8BhoZ+p8aEL/EH369lZdFGOBWFybbbqCPQNKg==
 
 asynckit@^0.4.0:
   version "0.4.0"
@@ -333,10 +333,10 @@ date-easter@^0.2.4:
   resolved "https://registry.yarnpkg.com/date-easter/-/date-easter-0.2.4.tgz#744b7751490c4869a221f9b0461f3a2f81e788cc"
   integrity sha512-y/n/1kNLr/bKqQf0kYNdeIBP7FTKqOn1QCnP0TGRHEyEgvFhjUY5JnnL4F7THszESVRyNhbOW74Xd+eezrvRMQ==
 
-date-holidays-parser@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/date-holidays-parser/-/date-holidays-parser-1.3.0.tgz#1ef332cb67158966e9c9f6bdc2048e2f21257d8d"
-  integrity sha512-6KwDrMlLlIi1EtvmX9bo1lTM3o5EFphKDt1aUHUDumfNxLXmk6W2DUbRHGsUwHxizvdR0A24KjH8DxTohwYiRg==
+date-holidays-parser@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/date-holidays-parser/-/date-holidays-parser-1.3.1.tgz#15883da5f129581aefdbfcd25e2520b105df5527"
+  integrity sha512-n7nPr0AE5WbDf8ugmJ9/XEUVmtijQu/qA6e/YXKNbVDGMghZXSnc1enQe0mxqhoT3aF9bJJcogFP9ivrlICXbg==
   dependencies:
     astronomia "^2.0.1"
     caldate "^1.0.3"
@@ -349,11 +349,11 @@ date-holidays-parser@^1.3.0:
     moment-timezone "^0.5.23"
 
 date-holidays@~1:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/date-holidays/-/date-holidays-1.3.0.tgz#99826f50fd9307feb83fa2e2115feee9f23118d0"
-  integrity sha512-gQlHneQmpA6i4h/xF0Df/0z21N1+ipg2h5tPLnnSTp4UvUhx3mbud32UU8DoEiU1/PzpWmHW7mVTPqueSSQ5nQ==
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/date-holidays/-/date-holidays-1.3.4.tgz#377ae0da2cd9543d8daad6d39745ea775c697151"
+  integrity sha512-JluPuO6k2Fzw0JLpNxfk/O6L0RN6CLpJIrBWr2ryWihuaq+r4FHJUzWzzY4zMpbWtkLTB0kZl5RvTAFwhIdh+Q==
   dependencies:
-    date-holidays-parser "^1.3.0"
+    date-holidays-parser "^1.3.1"
     js-yaml "^3.12.0"
     lodash.omit "^4.5.0"
     lodash.pick "^4.4.0"
@@ -900,9 +900,9 @@ isstream@~0.1.2:
   integrity sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo=
 
 js-yaml@^3.12.0:
-  version "3.12.0"
-  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.12.0.tgz#eaed656ec8344f10f527c6bfa1b6e2244de167d1"
-  integrity sha512-PIt2cnwmPfL4hKNwqeiuz4bKfnzHTBv6HyVgjahA6mPLwPDzjDWrplJBMjHUFxku/N3FlmrbyPclad+I+4mJ3A==
+  version "3.12.1"
+  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.12.1.tgz#295c8632a18a23e054cf5c9d3cecafe678167600"
+  integrity sha512-um46hB9wNOKlwkHgiuyEVAybXBjwFUV0Z/RaHJblRd9DXltue9FTYvzCr9ErQrK9Adz5MU4gHWVaNUfdmrC8qA==
   dependencies:
     argparse "^1.0.7"
     esprima "^4.0.0"
