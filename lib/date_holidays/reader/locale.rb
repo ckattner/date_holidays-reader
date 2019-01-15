@@ -20,7 +20,7 @@ module DateHolidays
       def raw_holidays(year, language: :en, types: Set.new)
         types = validate_and_convert_types_to_set(types)
 
-        result = js_bridge.extract(:holidays, locale_selector, year, lang_opt(language))
+        result = js_bridge.extract(:holidays, locale_selector, year, *lang_opts(language))
         type_filter(result, types)
       end
 
@@ -32,13 +32,13 @@ module DateHolidays
       end
 
       def states(language = :en)
-        js_bridge.extract(:states, locale_selector, lang_opt(language))
+        js_bridge.extract(:states, locale_selector, *lang_opts(language))
       end
 
       def regions(language = :en)
         raise Caution::IllegalStateError, 'a state is required' unless state
 
-        js_bridge.extract(:regions, locale_selector, lang_opt(language))
+        js_bridge.extract(:regions, locale_selector, *lang_opts(language))
       end
 
       def languages
@@ -97,8 +97,8 @@ module DateHolidays
         JsBridge.new
       end
 
-      def lang_opt(language)
-        language ? "--lang #{language}" : ''
+      def lang_opts(language)
+        language ? ['--lang', language.to_s] : []
       end
     end
   end
