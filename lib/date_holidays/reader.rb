@@ -3,6 +3,7 @@
 require 'acts_as_hashable'
 require 'caution'
 require 'json'
+require 'os'
 
 require 'date_holidays/reader/config'
 require 'date_holidays/reader/holiday'

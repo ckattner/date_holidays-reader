@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'caution'
-
 module DateHolidays
   module Reader
     VERSION = '0.2.0'

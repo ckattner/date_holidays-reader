@@ -9,6 +9,19 @@ module DateHolidays
           JsBridge.new.extract(:countries)
         end
       end
+
+      def native_mac?
+        OS.osx?
+      end
+
+      def native_linux?
+        OS.linux?
+      end
+
+      # The path to where the `node` command lives.
+      def node_path
+        nil
+      end
     end
   end
 end

@@ -4,6 +4,7 @@ PATH
     date_holidays-reader (0.2.0)
       acts_as_hashable (~> 1)
       caution
+      os (~> 1)
 
 GEM
   remote: https://rubygems.org/
@@ -41,6 +42,7 @@ GEM
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    os (1.0.0)
     parallel (1.12.1)
     parser (2.5.3.0)
       ast (~> 2.4.0)

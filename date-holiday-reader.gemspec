@@ -44,6 +44,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'acts_as_hashable', '~> 1'
   spec.add_dependency 'caution'
+  spec.add_dependency 'os', '~> 1'
 
   spec.add_development_dependency 'bundler', '~> 1.17'
   spec.add_development_dependency 'guard'
