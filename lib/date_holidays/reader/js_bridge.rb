@@ -18,7 +18,7 @@ module DateHolidays
 
       def extract(sub_cmd, *args)
         # TODO: use Open3 for error handling?: https://ruby-doc.org/stdlib-2.3.0/libdoc/open3/rdoc/Open3.html#method-c-popen3
-        cmd = File.join(NODE_BIN_PATH, 'holidays-to-json-macos')
+        cmd = File.join(NODE_BIN_PATH, holidays_to_json_program)
         cmd_tokens_as_strings = [cmd, sub_cmd.to_s, *args].map(&:to_s)
 
         cmd_tokens_as_strings.unshift(config.node_path.to_s) if config.node_path
