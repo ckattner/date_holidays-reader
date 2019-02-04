@@ -67,7 +67,7 @@ To install this gem onto your local machine, run `bundle exec rake install`.
 $ yarn upgrade
 ```
 
-Verify from the Yarn output that date-holidays updated.
+Verify from the Yarn output that date-holidays was updated.
 
 2. Recompile the node-bin binaries:
 
@@ -88,3 +88,5 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 Everyone interacting in the DateHolidays::Reader project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/date_holidays-reader/blob/master/CODE_OF_CONDUCT.md).
 
 ## TODO
+
+* Holiday type filtering should be handled by node.
