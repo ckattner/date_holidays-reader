@@ -10,8 +10,6 @@ RSpec.describe DateHolidays::Reader::Locale do
   end
 
   describe 'holidays' do
-
-
     it 'retrieves basic UK holidays' do
       holidays2018 = gb.holidays(2018)
 
