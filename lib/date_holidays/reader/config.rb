@@ -5,6 +5,9 @@ module DateHolidays
     # Tells the gem how to interact with Node and provides a list of countries.
     # See the configuration section of the Readme for more inforamtion.
     class Config
+      SUPPORTED_CPU_BITS = 64
+      private_constant :SUPPORTED_CPU_BITS
+
       class << self
         attr_reader :node_path
         attr_writer :default
@@ -33,11 +36,11 @@ module DateHolidays
       end
 
       def native_mac?
-        OS.osx?
+        OS.osx? && OS.bits == SUPPORTED_CPU_BITS
       end
 
       def native_linux?
-        OS.linux?
+        OS.linux? && OS.bits == SUPPORTED_CPU_BITS
       end
     end
   end

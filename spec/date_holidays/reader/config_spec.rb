@@ -11,27 +11,39 @@ RSpec.describe DateHolidays::Reader::Config do
 
   describe 'os detection' do
     describe 'native Mac OS' do
-      it 'detects Mac OS' do
-        expect(OS).to receive(:osx?).and_return true
-        expect(OS).to receive(:linux?).and_return false
-
-        expect(subject.native_mac?).to eq true
-        expect(subject.native_linux?).to eq false
+      before do
+        allow(OS).to receive(:osx?).and_return true
+        allow(OS).to receive(:linux?).and_return false
+        allow(OS).to receive(:bits).and_return 64
       end
 
-      it 'only supports 64 bit Mac OS'
+      it { should be_native_mac }
+      it { should_not be_native_linux }
+
+      it 'only supports 64 bit Mac OS' do
+        expect(OS).to receive(:bits).and_return 32
+
+        should_not be_native_mac
+        should_not be_native_linux
+      end
     end
 
     describe 'native Linux' do
-      it 'detects Linux' do
-        expect(OS).to receive(:linux?).and_return true
-        expect(OS).to receive(:osx?).and_return false
-
-        expect(subject.native_linux?).to eq true
-        expect(subject.native_mac?).to eq false
+      before do
+        allow(OS).to receive(:osx?).and_return false
+        allow(OS).to receive(:linux?).and_return true
+        allow(OS).to receive(:bits).and_return 64
       end
 
-      it 'only supports 64 bit Linux'
+      it { should be_native_linux }
+      it { should_not be_native_mac }
+
+      it 'only supports 64 bit Linux' do
+        expect(OS).to receive(:bits).and_return 32
+
+        should_not be_native_mac
+        should_not be_native_linux
+      end
     end
   end
 
