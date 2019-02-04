@@ -149,8 +149,10 @@ RSpec.describe DateHolidays::Reader::Locale do
   end
 
   describe 'configuration' do
+    let(:node_path) { 'node' }
+
     it 'can invoke node directly' do
-      node_config = DateHolidays::Reader::Config.new(node_path: 'node')
+      node_config = DateHolidays::Reader::Config.new(node_path: node_path)
       node_bridge = DateHolidays::Reader::JsBridge.new(config: node_config)
       subject = described_class.new(country: :gb, js_bridge: node_bridge)
       holidays2018 = subject.holidays(2018)
@@ -159,6 +161,15 @@ RSpec.describe DateHolidays::Reader::Locale do
       expect(holidays2018).to eq(gb_holidays)
     end
 
-    it 'can be configured at the module level'
+    it 'can be configured at the module level' do
+      DateHolidays::Reader::Config.node_path = node_path
+      expect(DateHolidays::Reader::Config.default.node_path).to eq node_path
+
+      subject = described_class.new(country: :gb)
+      holidays2018 = subject.holidays(2018)
+
+      expect(holidays2018.length).to eq(9)
+      expect(holidays2018).to eq(gb_holidays)
+    end
   end
 end

@@ -3,8 +3,22 @@
 module DateHolidays
   module Reader
     # Tells the gem how to interact with Node and provides a list of countries.
+    # See the configuration section of the Readme for more inforamtion.
     class Config
       class << self
+        attr_reader :node_path
+        attr_writer :default
+
+        def node_path=(path)
+          # Clear out the cached config when the node path changes:
+          @default = nil
+          @node_path = path
+        end
+
+        def default
+          @default ||= new(node_path: node_path)
+        end
+
         def countries
           JsBridge.new.extract(:countries)
         end
