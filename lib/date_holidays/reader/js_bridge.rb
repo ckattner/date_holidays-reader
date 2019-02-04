@@ -4,7 +4,9 @@ module DateHolidays
   module Reader
     # A communication bridge to the JavaScript process which houses the date-holidays node module.
     class JsBridge
-      JS_PROGRAM_PATH = File.expand_path('../../../bin/holidays-to-json.js', __dir__).freeze
+      BIN_PATH = File.expand_path('../../../bin', __dir__).freeze
+
+      JS_PROGRAM_PATH = File.expand_path(File.join(BIN_PATH, '/holidays-to-json.js')).freeze
       NODE_BIN_PATH = File.expand_path('../../../node_bin', __dir__).freeze
       private_constant :JS_PROGRAM_PATH, :NODE_BIN_PATH
 
@@ -19,20 +21,25 @@ module DateHolidays
       end
 
       def extract(sub_cmd, *args)
-        cmd_tokens_as_strings = (command + [sub_cmd.to_s, *args]).map(&:to_s)
-        json_string = ''
+        JSON.parse(get_output(holidays_to_json_command + [sub_cmd, *args]))
+      end
 
-        output_command(cmd_tokens_as_strings) if debug
+      def get_output(args)
+        args = Array(args)
+        cmd_tokens_as_strings = args.map(&:to_s)
+        output = nil
 
-        IO.popen(cmd_tokens_as_strings, err: %i[child out]) { |cmd_io| json_string = cmd_io.read }
-        JSON.parse(json_string)
+        print_command(cmd_tokens_as_strings) if debug
+
+        IO.popen(cmd_tokens_as_strings, err: %i[child out]) { |cmd_io| output = cmd_io.read }
+        output
       end
 
       private
 
       # Returns an array of strings containing the tokens to execute the
       # date-holidays wrapper depending on configuration.
-      def command
+      def holidays_to_json_command
         if config.node_path
           [config.node_path, JS_PROGRAM_PATH]
         elsif pre_compiled_program

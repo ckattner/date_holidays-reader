@@ -1,19 +1,26 @@
 # frozen_string_literal: true
 
+require_relative 'js_bridge'
+
 module DateHolidays
   module Reader
     VERSION = '0.2.0'
 
     # Used to retreive futher version information such as the underlying node module version.
     class Version
-      class << self
-        def node_module_version
-          # if configured to use the pre-compiled binaries
-          from_yarn_dot_lock
+      VERSION_PROGRAM_PATH = File.join(JsBridge::BIN_PATH, 'date-holidays-version.js').freeze
+      private_constant :VERSION_PROGRAM_PATH
 
-          # TODO: check the locally installed date-holidays Node module version via:
-          # require.resolve('date-holidays')
-          # and then parsing its relative package.json
+      class << self
+        def node_module_version(config = Config.default)
+          # When running via node, check to see what version the user has
+          # installed. This could be different from what is in this gem's
+          # yarn.lock.
+          if config.node_path
+            JsBridge.new(config: config).get_output(VERSION_PROGRAM_PATH).chomp
+          else
+            from_yarn_dot_lock
+          end
         end
 
         private
