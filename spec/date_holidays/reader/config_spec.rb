@@ -35,5 +35,8 @@ RSpec.describe DateHolidays::Reader::Config do
     end
   end
 
-  it 'allows the user to specify the location of his or her node binary'
+  it 'allows the user to specify the location of his or her node binary' do
+    path = '/usr/bin/node'
+    expect(described_class.new(node_path: path).node_path).to eq(path)
+  end
 end

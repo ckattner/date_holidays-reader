@@ -10,17 +10,20 @@ module DateHolidays
         end
       end
 
+      attr_reader :node_path
+
+      def initialize(node_path: nil)
+        @node_path = node_path
+
+        freeze
+      end
+
       def native_mac?
         OS.osx?
       end
 
       def native_linux?
         OS.linux?
-      end
-
-      # The path to where the `node` command lives.
-      def node_path
-        nil
       end
     end
   end

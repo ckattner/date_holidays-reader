@@ -3,13 +3,14 @@
 RSpec.describe DateHolidays::Reader::Locale do
   let(:gb) { described_class.new(country: :gb) }
   let(:us) { described_class.new(country: :us) }
+  let(:gb_holidays) do
+    fixture_path = File.expand_path('./gb_fixture.json', __dir__)
+    holidays_json = JSON.parse(File.read(fixture_path))
+    DateHolidays::Reader::Holiday.array(holidays_json)
+  end
 
   describe 'holidays' do
-    let(:gb_holidays) do
-      fixture_path = File.expand_path('./gb_fixture.json', __dir__)
-      holidays_json = JSON.parse(File.read(fixture_path))
-      DateHolidays::Reader::Holiday.array(holidays_json)
-    end
+
 
     it 'retrieves basic UK holidays' do
       holidays2018 = gb.holidays(2018)
@@ -147,5 +148,19 @@ RSpec.describe DateHolidays::Reader::Locale do
 
       expect(found_zones).to eq ['Europe/London']
     end
+  end
+
+  describe 'configuration' do
+    it 'can invoke node directly' do
+      node_config = DateHolidays::Reader::Config.new(node_path: 'node')
+      node_bridge = DateHolidays::Reader::JsBridge.new(config: node_config)
+      subject = described_class.new(country: :gb, js_bridge: node_bridge)
+      holidays2018 = subject.holidays(2018)
+
+      expect(holidays2018.length).to eq(9)
+      expect(holidays2018).to eq(gb_holidays)
+    end
+
+    it 'can be configured at the module level'
   end
 end

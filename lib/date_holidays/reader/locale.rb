@@ -5,12 +5,13 @@ module DateHolidays
     # Represents specific locale which contains holidays. This is the main
     # entry point into the gem.
     class Locale
-      attr_reader :country, :state, :region
+      attr_reader :country, :js_bridge, :region, :state
 
-      def initialize(country:, state: nil, region: nil)
+      def initialize(country:, state: nil, region: nil, js_bridge: JsBridge.new)
         @country = country || raise(ArgumentError, 'a country is required')
         @state = state
         @region = region
+        @js_bridge = js_bridge
 
         freeze
       end
@@ -91,10 +92,6 @@ module DateHolidays
         end
 
         types
-      end
-
-      def js_bridge
-        JsBridge.new
       end
 
       def lang_opts(language)
