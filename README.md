@@ -37,13 +37,15 @@ This gem ships with pre-compiled wrapper programs for the date-holidays node mod
 
 Note that setting `node_path` will also force the gem to use Node instead of the provided binaries when running on a supported OS and processor combination.
 
+Note that native Windows support would not be difficult to add. Pull requests are welcome!
+
 ## Related Work
 
 The [holidays](https://github.com/holidays/holidays) gem is very similar and is a pure Ruby implimentaiton. This gem was created as the date-holidays node module has support for more countries. An advantages of the holidays gem over this gem is that holidays is faster as it does not have to fork a Node.js process in order to retreive data. Also, the holidays gem has support for some niche data such as [US Federal Reserve Banks](https://github.com/holidays/definitions/blob/master/federalreservebanks.yaml), the [New York Stock Exchange](https://github.com/holidays/definitions/blob/master/nyse.yaml), and others. Use the right tool for your needs.
 
 ## Future Direction
 
-The holiday definitions provided by the date-holidays node module defined by a specific grammer housed in YAML files. The next logical step would be to build a pure Ruby parser for this grammar. Time is the only limit here. If this works is done, it would be in a separate gem as it would not have to be a read only interface; it would be trivial to support user defined holiday definitions like the Node module.
+The holiday definitions provided by the date-holidays Node module defined by a specific grammer housed in YAML files. The next logical step would be to build a pure Ruby parser for this grammar. Time is the only limit here. If this works is done, it would be in a separate gem as it would not have to be a read only interface; it would be trivial to support user defined holiday definitions like the Node module.
 
 ## Development
 
