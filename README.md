@@ -51,7 +51,33 @@ The holiday definitions provided by the date-holidays Node module defined by a s
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+To install this gem onto your local machine, run `bundle exec rake install`.
+
+### Releasing
+
+1. Update the version number in `version.rb` and add a new entry to `CHANGELOG.md`.
+
+1. Then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+
+### Updating the date-holidays Node Module Dependency
+
+1. Update node modules:
+
+```bash
+$ yarn upgrade
+```
+
+Verify from the Yarn output that date-holidays updated.
+
+2. Recompile the node-bin binaries:
+
+```bash
+bundle exec rake node_compile
+```
+
+3. Update the node module version in `spec/date_holidays/reader/version_spec.rb`.
+
+4. Verify by running the tests and check in yarn.lock.
 
 ## Contributing
 
