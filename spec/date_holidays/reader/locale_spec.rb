@@ -153,7 +153,7 @@ RSpec.describe DateHolidays::Reader::Locale do
 
     it 'can invoke node directly' do
       node_config = DateHolidays::Reader::Config.new(node_path: node_path)
-      node_bridge = DateHolidays::Reader::JsBridge.new(config: node_config)
+      node_bridge = DateHolidays::Reader::JsBridge.new(node_config)
       subject = described_class.new(country: :gb, js_bridge: node_bridge)
       holidays2018 = subject.holidays(2018)
 

@@ -13,7 +13,7 @@ module DateHolidays
       attr_reader :config, :debug
 
       # TODO: initialize with a configuration object for how to run the command
-      def initialize(config: Config.default, debug: false)
+      def initialize(config = Config.default, debug: false)
         @config = config
         @debug = debug
 

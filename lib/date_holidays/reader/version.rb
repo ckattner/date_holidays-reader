@@ -17,7 +17,7 @@ module DateHolidays
           # installed. This could be different from what is in this gem's
           # yarn.lock.
           if config.node_path
-            JsBridge.new(config: config).get_output(VERSION_PROGRAM_PATH).chomp
+            JsBridge.new(config).get_output(VERSION_PROGRAM_PATH).chomp
           else
             from_yarn_dot_lock
           end
