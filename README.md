@@ -166,6 +166,11 @@ Before submitting a pull requests, please do the following:
 
 Everyone interacting in the DateHolidays::Reader project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/bluemarblepayroll/date_holidays-reader/blob/master/CODE_OF_CONDUCT.md).
 
+## License
+
+This project is MIT and [Creative Commons Attribution-ShareAlike 3.0](http://creativecommons.org/licenses/by-sa/3.0/)
+Licensed. See the LICENSE file for more information.
+
 ## TODO
 
 * Holiday type filtering should be handled by Node.
