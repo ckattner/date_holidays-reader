@@ -153,6 +153,13 @@ bundle exec rake node_compile
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/bluemarblepayroll/date_holidays-reader. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
+Before submitting a pull requests, please do the following:
+
+1. Update the README.md if changing or adding to the API.
+2. Add to or update unit tests.
+3. Ensure that all tests are passing.
+4. Ensure that rubocop does not find any issues.
+
 ## Code of Conduct
 
 Everyone interacting in the DateHolidays::Reader project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/bluemarblepayroll/date_holidays-reader/blob/master/CODE_OF_CONDUCT.md).
