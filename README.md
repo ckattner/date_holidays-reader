@@ -37,3 +37,8 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## Code of Conduct
 
 Everyone interacting in the Date::Holiday::Reader project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/date-holiday-reader/blob/master/CODE_OF_CONDUCT.md).
+
+## License
+
+This project is MIT and [Creative Commons Attribution-ShareAlike 3.0](http://creativecommons.org/licenses/by-sa/3.0/)
+Licensed. See the LICENSE file for more information.
