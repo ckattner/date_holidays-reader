@@ -4,6 +4,7 @@ AllCops:
   Exclude:
     - 'bin/**/*'
     - Gemfile
+    - 'vendor/**/*'
   DisplayCopNames: true
   TargetRubyVersion: 2.3
 
