@@ -91,8 +91,6 @@ Or install it yourself as:
 
 If you are runnning a Linux or Mac OS X machine running a 64 x86 compatible processor then everything should work at this point. If you are running a different OS, different processor, or would like to use Node directly then continue to the configuration section.
 
-e
-
 ## Configuration
 
 This gem ships with pre-compiled wrapper programs for the date-holidays node module for Mac OS X and Linux running on 64 bit x86 processors. If you are running on those architectures then no configuration is needed as one those binaries will be used by default. If the gem detects that you are running on a different architecture then it will attempt to use the version of Node.js in your path. In this case, you will need to install the [date-holidays Node module](https://github.com/commenthol/date-holidays) before using this gem. It is also possible to explicitly tell the gem where your Node.js binary is located:
