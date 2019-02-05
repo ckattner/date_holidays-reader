@@ -1,5 +1,7 @@
 # DateHolidays::Reader
 
+[![Build Status](https://travis-ci.org/bluemarblepayroll/date_holidays-reader.svg?branch=master)](https://travis-ci.org/bluemarblepayroll/date_holidays-reader)
+
 This is a read only Ruby wrapper for the
 [date-holidays](https://github.com/commenthol/date-holidays) Node module. Note that Node does not have to be installed on many machines in order to use this gem. See the configuration section for more details.
 
