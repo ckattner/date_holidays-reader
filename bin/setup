@@ -5,5 +5,6 @@ set -vx
 
 bundle install
 yarn
+rake build
 
 # Do any other automated setup that you need to do here
