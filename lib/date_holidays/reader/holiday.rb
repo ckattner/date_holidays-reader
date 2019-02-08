@@ -32,7 +32,7 @@ module DateHolidays
       # initialization so I'd rather pass in everything as needed right away.
       def initialize(date:, start_time:, end_time:, name:, type:, substitute: false, note: nil)
         # rubocop:enable Metrics/ParameterLists
-        @date = date.is_a?(Date) ? date : Date.strptime(date, '%Y-%m-%d')
+        @date = date.respond_to?(:to_date) ? date.to_date : Date.strptime(date, '%Y-%m-%d')
         @start_time = parse_time(start_time)
         @end_time = parse_time(end_time)
         @name = name

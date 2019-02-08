@@ -24,7 +24,7 @@ RSpec.describe DateHolidays::Reader::Locale do
       expect(holidays2018).to eq(gb_holidays)
     end
 
-    it 'correctly assigns subtitute days' do
+    it 'correctly assigns substitute days' do
       us2016 = us.holidays(2016)
       xmas_date = Date.parse('2016-12-25')
       day_after_xmas_date = Date.parse('2016-12-26')
@@ -40,8 +40,8 @@ RSpec.describe DateHolidays::Reader::Locale do
       expect(xmas_substitute.substitute?).to eq true
     end
 
-    it 'retreives holidays for a specific state' do
-      organmens_day = DateHolidays::Reader::Holiday.new(
+    it 'retrieves holidays for a specific state' do
+      orangemens_day = DateHolidays::Reader::Holiday.new(
         date: '2018-07-12 00:00:00',
         start_time: '2018-07-11T23:00:00.000Z',
         end_time: '2018-07-12T23:00:00.000Z',
@@ -52,10 +52,10 @@ RSpec.describe DateHolidays::Reader::Locale do
       holidays2018 = nothern_ireland.holidays(2018)
 
       expect(holidays2018.length).to eq(13)
-      expect(holidays2018).to include(organmens_day)
+      expect(holidays2018).to include(orangemens_day)
     end
 
-    it 'retreives holidays for a specific state and region' do
+    it 'retrieves holidays for a specific state and region' do
       mardi_gras = DateHolidays::Reader::Holiday.new(
         date: '2019-03-05 00:00:00',
         start_time: '2019-03-05T06:00:00.000Z',
@@ -71,9 +71,9 @@ RSpec.describe DateHolidays::Reader::Locale do
       expect(holidays2019).to include(mardi_gras)
     end
 
-    it 'retreives holidays for a region for a country without states'
+    it 'retrieves holidays for a region for a country without states'
 
-    it 'retreives holidays in a specific language' do
+    it 'retrieves holidays in a specific language' do
       gb = described_class.new(country: :gb)
       expect(gb.holidays(2017, language: :es).first.name).to eq 'Año Nuevo'
     end

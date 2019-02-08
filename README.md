@@ -2,12 +2,12 @@
 
 [![Build Status](https://travis-ci.org/bluemarblepayroll/date_holidays-reader.svg?branch=master)](https://travis-ci.org/bluemarblepayroll/date_holidays-reader)
 
-This is a read only Ruby wrapper for the
+This is a read-only Ruby wrapper for the
 [date-holidays](https://github.com/commenthol/date-holidays) Node module. Note that Node does not have to be installed on many machines in order to use this gem. See the configuration section for more details.
 
 ## Usage
 
-Holiday information is available for many different locales. The first step is to create a locale object which represents a country or part of a country. For example, to retreive all holidays for this year in the United States:
+Holiday information is available for many different locales. The first step is to create a locale object which represents a country or part of a country. For example, to retrieve all holidays for this year in the United States:
 
 ```ruby
 us = DateHolidays::Reader::Locale.new(country: :us)
@@ -59,11 +59,11 @@ DateHolidays::Reader::Locale.new(country: :us, state: :la).regions
 
 ### Holiday Object
 
-`DateHolidays::Reader::Locale#holidays` returns a list contining an instance of `DateHolidays::Reader::Holiday` objects which have the following fields:
+`DateHolidays::Reader::Locale#holidays` returns a list containing an instance of `DateHolidays::Reader::Holiday` objects which have the following fields:
 
 * *date* - The start date of the holiday which is stored in a Ruby `Date` instance.
 * *start_time* - The start time of the holiday in UTC represented as a `Time` instance. Note that these times represent when the holiday starts *in this locale*. For example, US New Year's day in 2019 has a time of '2019-01-01 05:00:00 UTC' as Washington DC is five hours behind UTC.
-* *end_time* - The time in UTC when the holiday ends. Note that some holidays (for example certian religious holidays) may not start or end on midnight. Also, some holidays last more or less then 24 hours.
+* *end_time* - The time in UTC when the holiday ends. Note that some holidays (for example certain religious holidays) may not start or end on midnight. Also, some holidays last more or less then 24 hours.
 * *name* - A string representing the human readable name of the holiday. For example: "New Year's Day."
 * *type* - A symbol which describes the status of the holiday. See the [date-holidays documentation](https://github.com/commenthol/date-holidays#types-of-holidays) for a full explanation.
 * *substitute* - A boolean value that, if true, means that it is a substitute for another holiday.
@@ -91,11 +91,11 @@ Or install it yourself as:
 
     $ gem install date_holidays-reader
 
-If you are runnning a Linux or Mac OS X machine running a 64 x86 compatible processor then everything should work at this point. If you are running a different OS, different processor, or would like to use Node directly then continue to the configuration section.
+If you are running a Linux or Mac OS X machine running a x86-64](https://en.wikipedia.org/wiki/X86-64) compatible processor then everything should work at this point. If you are running a different OS, different processor, or would like to use Node directly then continue to the configuration section.
 
 ## Configuration
 
-This gem ships with pre-compiled wrapper programs for the date-holidays node module for Mac OS X and Linux running on 64 bit x86 processors. If you are running on those architectures then no configuration is needed as one those binaries will be used by default. If the gem detects that you are running on a different architecture then it will attempt to use the version of Node.js in your path. In this case, you will need to install the [date-holidays Node module](https://github.com/commenthol/date-holidays) before using this gem. It is also possible to explicitly tell the gem where your Node.js binary is located:
+This gem ships with pre-compiled wrapper programs for the date-holidays Node module for Mac OS X and Linux running on [x86-64](https://en.wikipedia.org/wiki/X86-64) processors. If you are running on those architectures then no configuration is needed as one those binaries will be used by default. If the gem detects that you are running on a different architecture then it will attempt to use the version of Node.js in your path. In this case, you will need to install the [date-holidays Node module](https://github.com/commenthol/date-holidays) before using this gem. It is also possible to explicitly tell the gem where your Node.js binary is located:
 
 ```ruby
   DateHolidays::Reader::Config.node_path = '/path/to/your/version/of/node`
@@ -107,11 +107,15 @@ Note that native Windows support would not be difficult to add. Pull requests ar
 
 ## Related Work
 
-The [holidays](https://github.com/holidays/holidays) gem is very similar and is a pure Ruby implimentaiton. This gem was created as the date-holidays node module has support for more countries. An advantages of the holidays gem over this gem is that holidays is faster as it does not have to fork a Node.js process in order to retreive data. Also, the holidays gem has support for some niche data such as [US Federal Reserve Banks](https://github.com/holidays/definitions/blob/master/federalreservebanks.yaml), the [New York Stock Exchange](https://github.com/holidays/definitions/blob/master/nyse.yaml), and others. Use the right tool for your needs.
+The [holidays](https://github.com/holidays/holidays) gem is very similar and is a pure Ruby implementation. This gem was created as the date-holidays node module has support for more countries. An advantages of the holidays gem over this gem is that holidays is faster as it does not have to fork a Node.js process in order to retrieve data. Also, the holidays gem has support for some niche data such as [US Federal Reserve Banks](https://github.com/holidays/definitions/blob/master/federalreservebanks.yaml), the [New York Stock Exchange](https://github.com/holidays/definitions/blob/master/nyse.yaml), and others. Use the right tool for your needs.
 
 ## Future Direction
 
-The holiday definitions provided by the date-holidays Node module defined by a specific grammer housed in YAML files. The next logical step would be to build a pure Ruby parser for this grammar. Time is the only limit here. If this works is done, it would be in a separate gem as it would not have to be a read only interface; it would be trivial to support user defined holiday definitions like the Node module.
+The holiday definitions provided by the date-holidays Node module defined by a specific grammar housed in YAML files. The next logical step would be to build a pure Ruby parser for this grammar. Time is the only limit here. If this works is done, it would be in a separate gem as it would not have to be a read-only interface; it would be trivial to support user defined holiday definitions like the Node module.
+
+## Gem Name
+
+You may be wondering: "Why the underscore and dash in the name?" This is intentional to match the name of of the main Ruby module of `DateHolidays::Reader`. The Ruby convention is to use underscores to separate words and dashes for namespaces. Note that if another gem is created which is not just a Node module wrapper then the module will be just `DateHolidays` and the gem will be named date_holidays.
 
 ## Development
 
@@ -136,7 +140,7 @@ There is also a `Dockerfile` provided which can be used to verify the Linux bina
 1. Update node modules:
 
 ```bash
-$ yarn upgrade
+yarn upgrade
 ```
 
 Verify from the Yarn output that date-holidays was updated.

@@ -12,11 +12,11 @@ require 'caution'
 require 'json'
 require 'os'
 
-require 'date_holidays/reader/config'
-require 'date_holidays/reader/holiday'
-require 'date_holidays/reader/js_bridge'
-require 'date_holidays/reader/locale'
-require 'date_holidays/reader/version'
+require_relative 'reader/config'
+require_relative 'reader/holiday'
+require_relative 'reader/js_bridge'
+require_relative 'reader/locale'
+require_relative 'reader/version'
 
 module DateHolidays
   # Defines the outermost module for the gem.

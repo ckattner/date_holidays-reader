@@ -11,9 +11,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Ryan Gerry']
   spec.email         = ['rgerry@bluemarblepayroll.com']
 
-  spec.summary       = 'A read only Ruby wrapper for the date-holidays Node module'
+  spec.summary       = 'A read-only Ruby wrapper for the date-holidays Node module'
   spec.description   = <<~DESCRIPTION
-    This provides a read only interace over the data provided by the
+    This provides a read-only interace over the data provided by the
     date-holidays Node module available at https://github.com/commenthol/date-holidays .'
   DESCRIPTION
   spec.homepage = 'http://www.github.com/bluemarblepayroll/date_holidays-reader/'
