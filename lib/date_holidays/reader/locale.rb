@@ -69,7 +69,7 @@ module DateHolidays
         # Note that this could instead be .slice under Ruby >= 2.5 or with Rails:
         clean_hash = raw.select { |key, _value| SUPPORTED_HOLIDAY_ATTRIBUTES.include?(key) }
 
-        # Node date-holdiays uses start and end keys. The "end" key does not play well with Ruby.
+        # Node date-holidays uses start and end keys. The "end" key does not play well with Ruby.
         # Also, the "_time" suffix adds clarity.
         clean_hash[:start_time] = clean_hash.delete('start')
         clean_hash[:end_time] = clean_hash.delete('end')

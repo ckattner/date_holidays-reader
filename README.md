@@ -91,14 +91,14 @@ Or install it yourself as:
 
     $ gem install date_holidays-reader
 
-If you are running a Linux or Mac OS X machine running a x86-64](https://en.wikipedia.org/wiki/X86-64) compatible processor then everything should work at this point. If you are running a different OS, different processor, or would like to use Node directly then continue to the configuration section.
+If you are running a Linux or Mac OS X machine running an [x86-64](https://en.wikipedia.org/wiki/X86-64) compatible processor then everything should work at this point. If you are running a different OS, different processor, or would like to use Node directly then continue to the configuration section.
 
 ## Configuration
 
 This gem ships with pre-compiled wrapper programs for the date-holidays Node module for Mac OS X and Linux running on [x86-64](https://en.wikipedia.org/wiki/X86-64) processors. If you are running on those architectures then no configuration is needed as one those binaries will be used by default. If the gem detects that you are running on a different architecture then it will attempt to use the version of Node.js in your path. In this case, you will need to install the [date-holidays Node module](https://github.com/commenthol/date-holidays) before using this gem. It is also possible to explicitly tell the gem where your Node.js binary is located:
 
 ```ruby
-  DateHolidays::Reader::Config.node_path = '/path/to/your/version/of/node`
+  DateHolidays::Reader::Config.node_path = '/path/to/your/version/of/node'
 ```
 
 Note that setting `node_path` will also force the gem to use Node instead of the provided binaries when running on a supported OS and processor combination.
@@ -107,11 +107,11 @@ Note that native Windows support would not be difficult to add. Pull requests ar
 
 ## Related Work
 
-The [holidays](https://github.com/holidays/holidays) gem is very similar and is a pure Ruby implementation. This gem was created as the date-holidays node module has support for more countries. An advantages of the holidays gem over this gem is that holidays is faster as it does not have to fork a Node.js process in order to retrieve data. Also, the holidays gem has support for some niche data such as [US Federal Reserve Banks](https://github.com/holidays/definitions/blob/master/federalreservebanks.yaml), the [New York Stock Exchange](https://github.com/holidays/definitions/blob/master/nyse.yaml), and others. Use the right tool for your needs.
+The [holidays](https://github.com/holidays/holidays) gem is very similar and is a pure Ruby implementation. This gem was created as the date-holidays node module has support for more countries. An advantage of the holidays gem over this gem is that holidays is faster as it does not have to fork a Node.js process in order to retrieve data. Also, the holidays gem has support for some niche data such as [US Federal Reserve Banks](https://github.com/holidays/definitions/blob/master/federalreservebanks.yaml), the [New York Stock Exchange](https://github.com/holidays/definitions/blob/master/nyse.yaml), and others. Use the right tool for your needs.
 
 ## Future Direction
 
-The holiday definitions provided by the date-holidays Node module defined by a specific grammar housed in YAML files. The next logical step would be to build a pure Ruby parser for this grammar. Time is the only limit here. If this works is done, it would be in a separate gem as it would not have to be a read-only interface; it would be trivial to support user defined holiday definitions like the Node module.
+The holiday definitions provided by the date-holidays Node module are defined by a specific grammar housed in YAML files. The next logical step would be to build a pure Ruby parser for this grammar. Time is the only limit here. If this work is done, it would be in a separate gem as it would not have to be a read-only interface; it would be trivial to support user defined holiday definitions like the Node module.
 
 ## Gem Name
 
