@@ -1,7 +1,14 @@
 #!/usr/bin/env ruby
 
+#
+# Copyright (c) 2019-present, Blue Marble Payroll, LLC
+#
+# This source code is licensed under the MIT license found in the
+# LICENSE file in the root directory of this source tree.
+#
+
 require "bundler/setup"
-require "date/holiday/reader"
+require "date_holidays/reader"
 
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.

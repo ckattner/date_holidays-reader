@@ -1,0 +1,27 @@
+#inherit_from: .rubocop_todo.yml
+
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - Gemfile
+    - 'vendor/**/*'
+  DisplayCopNames: true
+  TargetRubyVersion: 2.3
+
+Metrics/BlockLength:
+  Enabled: true
+  Exclude:
+    # The outer describe blocks throw this off for Rspec tests so disable.
+    - spec/**/*_spec.rb
+
+Metrics/LineLength:
+  Max: 100
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
