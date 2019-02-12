@@ -11,7 +11,7 @@ require_relative 'js_bridge'
 
 module DateHolidays
   module Reader
-    VERSION = '0.9.9'
+    VERSION = '1.0.0'
 
     # Used to retrieve futher version information such as the underlying node module version.
     class Version

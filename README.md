@@ -133,6 +133,8 @@ There is also a `Dockerfile` provided which can be used to verify the Linux bina
 
 1. Update the version number in `version.rb` and add a new entry to `CHANGELOG.md`.
 
+1. Commit and push the above changes.
+
 1. Then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ### Updating the date-holidays Node Module Dependency
