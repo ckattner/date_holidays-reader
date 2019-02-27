@@ -6,14 +6,13 @@
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
 #
-
 require_relative 'js_bridge'
 
 module DateHolidays
   module Reader
-    VERSION = '1.0.0'
+    VERSION = '1.0.1'
 
-    # Used to retrieve futher version information such as the underlying node module version.
+    # Used to retrieve futher version information such as the underlying Node module version.
     class Version
       VERSION_PROGRAM_PATH = File.join(JsBridge::BIN_PATH, 'date-holidays-version.js').freeze
       private_constant :VERSION_PROGRAM_PATH
