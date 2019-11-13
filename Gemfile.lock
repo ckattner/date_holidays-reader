@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    date_holidays-reader (1.0.1)
+    date_holidays-reader (1.0.2)
       acts_as_hashable (~> 1)
       caution
       os (~> 1)

@@ -1,6 +1,10 @@
 
 # DateHolidays::Reader Change Log
 
+## 1.0.2 (November, 12, 2019)
+
+* Updated the date-holidays Node module version to 1.4.7.
+
 ## 1.0.1 (February, 27, 2019)
 
 * Updated the date-holidays Node module version to 1.3.7 which incorporates some improvements and fixes for Germany.
