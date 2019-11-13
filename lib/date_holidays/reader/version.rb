@@ -10,9 +10,9 @@ require_relative 'js_bridge'
 
 module DateHolidays
   module Reader
-    VERSION = '1.0.1'
+    VERSION = '1.0.2'
 
-    # Used to retrieve futher version information such as the underlying Node module version.
+    # Used to retrieve further version information such as the underlying Node module version.
     class Version
       VERSION_PROGRAM_PATH = File.join(JsBridge::BIN_PATH, 'date-holidays-version.js').freeze
       private_constant :VERSION_PROGRAM_PATH
