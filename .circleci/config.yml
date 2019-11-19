@@ -14,12 +14,14 @@ jobs:
     steps:
       - checkout
 
+      - run: ruby -v | tee .ruby-version
+
       # TODO: wrap bundler caching logic into an Orb:
       - when:
           condition: << parameters.use-bundler-cache >>
           steps:
             - restore_cache:
-                key: v0.0.1-bundler-cache-{{ checksum "date_holidays-reader.gemspec" }}-{{ checksum "Gemfile" }}-ruby-<< parameters.ruby-version >>-{{ arch }}
+                key: v0.0.1-bundler-cache-{{ arch }}-{{ checksum ".ruby-version" }}-{{ checksum "date_holidays-reader.gemspec" }}
 
       - run: bundle install --path vendor/bundle
 
@@ -27,7 +29,7 @@ jobs:
           condition: << parameters.use-bundler-cache >>
           steps:
             - save_cache:
-                key: v0.0.1-bundler-cache-{{ checksum "date_holidays-reader.gemspec" }}-{{ checksum "Gemfile" }}-ruby-<< parameters.ruby-version >>-{{ arch }}
+                key: v0.0.1-bundler-cache-{{ arch }}-{{ checksum ".ruby-version" }}-{{ checksum "date_holidays-reader.gemspec" }}
                 paths:
                   - vendor/bundle
 
@@ -41,7 +43,6 @@ jobs:
       - run: bundle exec rspec
 
 workflows:
-  version: 2.1
   Build Multiple Ruby Versions:
     jobs:
       - build:
