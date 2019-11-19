@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  status_to_ms_teams: bluemarblepayroll/status_to_ms_teams_pure_bash@1.0.1
+
 jobs:
   build:
     parameters:
@@ -42,18 +45,24 @@ jobs:
       - run: bundle exec rake build
       - run: bundle exec rspec
 
+      - status_to_ms_teams/report:
+          webhook_url: $MS_TEAMS_WEBHOOK_URL
+
 workflows:
   Build Multiple Ruby Versions:
     jobs:
       - build:
           name: Ruby 2.4
           ruby-version: 2.4.9
+          context: org-global
       - build:
           name: Ruby 2.5
           ruby-version: 2.5.7
+          context: org-global
       - build:
           name: Ruby 2.6
           ruby-version: 2.6.5
+          context: org-global
   Monthly Gem Dependency Refresh Check:
     triggers:
       - schedule:
@@ -67,3 +76,4 @@ workflows:
           name: Ruby 2.6 Latest Gem Dependencies
           ruby-version: 2.6.5
           use-bundler-cache: false
+          context: org-global
