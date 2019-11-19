@@ -34,7 +34,7 @@ RSpec.describe DateHolidays::Reader::Locale do
       expect(xmas).not_to be_nil
       expect(xmas.substitute?).to eq false
 
-      # Monday, 2016-12-26 was a substitute as Christmas occured on a Sunday:
+      # Monday, 2016-12-26 was a substitute as Christmas occurred on a Sunday:
       xmas_substitute = us2016.find { |h| h.date == day_after_xmas_date }
       expect(xmas_substitute).not_to be_nil
       expect(xmas_substitute.substitute?).to eq true
