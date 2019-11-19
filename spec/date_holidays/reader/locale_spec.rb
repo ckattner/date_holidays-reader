@@ -75,7 +75,7 @@ RSpec.describe DateHolidays::Reader::Locale do
 
     it 'retrieves holidays in a specific language' do
       gb = described_class.new(country: :gb)
-      expect(gb.holidays(2017, language: :en).first.name).to eq 'Año Nuevo'
+      expect(gb.holidays(2017, language: :es).first.name).to eq 'Año Nuevo'
     end
 
     describe 'holiday type' do
