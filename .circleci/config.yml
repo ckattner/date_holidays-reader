@@ -43,7 +43,10 @@ jobs:
 
       - run: yarn
       - run: bundle exec rake build
-      - run: bundle exec rspec
+      - run: bundle exec rspec -r rspec_junit_formatter --format progress --format RspecJunitFormatter -o test-results/rspec/results.xml
+
+      - store_test_results:
+          path: test-results
 
       - status_to_ms_teams/report:
           webhook_url: $MS_TEAMS_WEBHOOK_URL
