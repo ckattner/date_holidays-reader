@@ -57,7 +57,7 @@ workflows:
   Monthly Gem Dependency Refresh Check:
     triggers:
       - schedule:
-          cron: '15 2 19 * *' # TODO: update this to the first of the month before merging
+          cron: '* * 1 * *'
           filters:
             branches:
               only:
