@@ -54,7 +54,7 @@ workflows:
           context: org-global
       - build:
           name: Ruby 2.6
-          ruby-version: 2.5.6
+          ruby-version: 2.6.6
           context: org-global
       - build:
           name: Ruby 2.7
