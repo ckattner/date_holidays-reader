@@ -49,17 +49,10 @@ workflows:
   Build Multiple Ruby Versions:
     jobs:
       - build:
-          name: Ruby 2.5
-          ruby-version: 2.5.8
           context: org-global
-      - build:
-          name: Ruby 2.6
-          ruby-version: 2.6.6
-          context: org-global
-      - build:
-          name: Ruby 2.7
-          ruby-version: 2.7.1
-          context: org-global
+          matrix:
+            parameters:
+              ruby-version: ['2.5.8', '2.6.6', '2.7.1']
   Monthly Gem Dependency Refresh Check:
     triggers:
       - schedule:
