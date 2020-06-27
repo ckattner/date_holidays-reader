@@ -1,6 +1,7 @@
 version: 2.1
 
 orbs:
+  ruby-orbs: sue445/ruby-orbs@1.4.4
   status_to_ms_teams: bluemarblepayroll/status_to_ms_teams_pure_bash@1.0.1
 
 jobs:
@@ -23,18 +24,14 @@ jobs:
       - when:
           condition: << parameters.use-bundler-cache >>
           steps:
-            - restore_cache:
-                key: v0.0.1-bundler-cache-{{ arch }}-{{ checksum ".ruby-version" }}-{{ checksum "date_holidays-reader.gemspec" }}
+              - ruby-orbs/bundle-install:
+                  with_gemfile_lock: false
+                  gemspec_name: date_holidays-reader
 
-      - run: bundle install --path vendor/bundle
-
-      - when:
+      - unless:
           condition: << parameters.use-bundler-cache >>
           steps:
-            - save_cache:
-                key: v0.0.1-bundler-cache-{{ arch }}-{{ checksum ".ruby-version" }}-{{ checksum "date_holidays-reader.gemspec" }}
-                paths:
-                  - vendor/bundle
+             - run: bundle install --path vendor/bundle
 
       - store_artifacts:
           path: Gemfile.lock
