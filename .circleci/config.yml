@@ -24,6 +24,7 @@ jobs:
               - ruby-orbs/bundle-install:
                   with_gemfile_lock: false
                   gemspec_name: date_holidays-reader
+                  cache_key_prefix: ruby-bundle-v1.0.1
 
       - unless:
           condition: << parameters.use-bundler-cache >>
@@ -49,6 +50,7 @@ workflows:
   Build Multiple Ruby Versions:
     jobs:
       - build:
+          name: Build Ruby v<< matrix.ruby-version >>
           context: org-global
           matrix:
             parameters:
