@@ -18,9 +18,6 @@ jobs:
     steps:
       - checkout
 
-      - run: ruby -v | tee .ruby-version
-
-      # TODO: wrap bundler caching logic into an Orb:
       - when:
           condition: << parameters.use-bundler-cache >>
           steps:
