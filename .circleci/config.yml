@@ -62,7 +62,7 @@ workflows:
           filters:
             branches:
               only:
-                - circleci # TODO: change this to master before merging
+                - master
     jobs:
       - build:
           name: Ruby 2.7 Latest Gem Dependencies
