@@ -67,7 +67,7 @@ RSpec.describe DateHolidays::Reader::Locale do
       new_orleans = described_class.new(country: :us, state: :la, region: :no)
       holidays2019 = new_orleans.holidays(2019)
 
-      expect(holidays2019.length).to eq(21)
+      expect(holidays2019.length).to eq(22)
       expect(holidays2019).to include(mardi_gras)
     end
 
