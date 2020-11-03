@@ -47,7 +47,7 @@ module DateHolidays
         @substitute
       end
 
-      # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+      # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity
       # I could cut down on those cops by iterating over instance variable and
       # using meta programming. However, that would obscure intent.
       def ==(other)
@@ -60,7 +60,7 @@ module DateHolidays
           other.substitute? == substitute? &&
           other.note == note
       end
-      # rubocop:enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+      # rubocop:enable Metrics/AbcSize, Metrics/CyclomaticComplexity
 
       private
 

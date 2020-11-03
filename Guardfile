@@ -26,7 +26,8 @@
 #  * zeus: 'zeus rspec' (requires the server to be started separately)
 #  * 'just' rspec: 'rspec'
 
-guard :rspec, cmd: 'bundle exec rspec --order=defined --format=documentation' do
+guard :rspec, cmd: 'DISABLE_SIMPLECOV=true bundle exec rspec ' \
+                   '--order=defined --format=documentation' do
   require 'guard/rspec/dsl'
   dsl = Guard::RSpec::Dsl.new(self)
 
