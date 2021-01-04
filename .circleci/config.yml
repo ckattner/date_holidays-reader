@@ -54,7 +54,7 @@ workflows:
           context: org-global
           matrix:
             parameters:
-              ruby-version: ['2.5.8', '2.6.6', '2.7.2']
+              ruby-version: ['2.5.8', '2.6.6', '2.7.2', '3.0.0']
   Monthly Gem Dependency Refresh Check:
     triggers:
       - schedule:
@@ -65,7 +65,7 @@ workflows:
                 - master
     jobs:
       - build:
-          name: Ruby 2.7 Latest Gem Dependencies
-          ruby-version: 2.7.2
+          name: Ruby 3 with Latest Gem Dependencies
+          ruby-version: 3.0.0
           use-bundler-cache: false
           context: org-global
