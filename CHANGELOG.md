@@ -1,9 +1,10 @@
 
 # DateHolidays::Reader Change Log
 
-## 1.0.3 (January 4, 2021)
+## 1.0.4 (January 4, 2021)
 
 * Official Support for Ruby 3.
+* Updated the date-holidays Node module version to 1.8.4.
 
 ## 1.0.3 (June 29, 2020)
 
