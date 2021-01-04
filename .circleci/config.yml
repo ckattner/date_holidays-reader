@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  ruby-orbs: sue445/ruby-orbs@1.4.4
+  ruby-orbs: sue445/ruby-orbs@1.6.1
   status_to_ms_teams: bluemarblepayroll/status_to_ms_teams_pure_bash@1.0.1
 
 jobs:
@@ -54,7 +54,7 @@ workflows:
           context: org-global
           matrix:
             parameters:
-              ruby-version: ['2.5.8', '2.6.6', '2.7.1']
+              ruby-version: ['2.5.8', '2.6.6', '2.7.2']
   Monthly Gem Dependency Refresh Check:
     triggers:
       - schedule:
@@ -66,6 +66,6 @@ workflows:
     jobs:
       - build:
           name: Ruby 2.7 Latest Gem Dependencies
-          ruby-version: 2.7.1
+          ruby-version: 2.7.2
           use-bundler-cache: false
           context: org-global
